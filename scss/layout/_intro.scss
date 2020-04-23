@@ -1,7 +1,7 @@
 #main-header {
     position: relative;
     min-height: 95vh;
-    background: linear-gradient(to right, rgba($color: $light-green, $alpha: 0.5), rgba($color: $dark-green, $alpha: 0.5)), url(../img/hero.jpg);
+    background: linear-gradient(45deg, rgba($color: $light-green, $alpha: 0.3), rgba($color: $dark-green, $alpha: 0.7)), url(../img/hero.jpg);
     background-size: cover;
     background-position: top;
     clip-path: polygon(0 0, 0 100%, 100% 75vh, 100% 0);
@@ -23,37 +23,36 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 
     .heading-primary {
 
         color: #ffff;
         text-transform: uppercase;
         backface-visibility: hidden;
+        margin-bottom: 6rem;
 
         &--main {
             animation: moveInLeft 1s ease-in forwards;
-
             display: block;
-
             font-size: 6rem;
             font-weight: 400;
             letter-spacing: 3.5rem;
-
             opacity: 0;
 
         }
 
         &--sub {
             animation: moveInRight 1s 0.5s ease-in forwards;
-
             display: block;
-
             font-size: 2rem;
             font-weight: 700;
             letter-spacing: 1.75rem;
 
             opacity: 0;
         }
+
+
     }
 }
 
@@ -79,5 +78,76 @@
     to {
         transform: translateX(0%);
         opacity: 1;
+    }
+}
+
+
+.btn {
+    font-size: 2rem;
+    border-radius: 10rem;
+
+
+    &:visited,
+    &:link {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        transition: all .2s;
+        position: relative;
+    }
+
+    &:hover {
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &:hover::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
+
+    &-white {
+        background-color: #ffff;
+        color: #777;
+
+        &::after {
+            background-color: #ffff;
+        }
+    }
+
+    &-animated {
+        animation: btnAnimate .5s .75s ease-in-out backwards;
+
+    }
+}
+
+@keyframes btnAnimate {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0%);
     }
 }
